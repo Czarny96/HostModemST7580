@@ -1,0 +1,59 @@
+﻿<Window x:Class="HostModemST7580.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HostModemST7580"
+        mc:Ignorable="d"
+        Title="ST7580 Interface" Height="313" Width="1056">
+    <Grid HorizontalAlignment="Left" Width="1044">
+        <GroupBox Header="COM" HorizontalAlignment="Left" Height="65" Margin="10,10,0,0" VerticalAlignment="Top" Width="350">
+            <Grid>
+                <ComboBox x:Name="PortBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Height="25" />
+                <Button x:Name="OpenButton" Content="Open" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Width="75" Click="OpenSelectedPort" Height="25"/>
+                <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="255,10,0,0" VerticalAlignment="Top" Width="75" Click="CloseSelectedPort" Height="25"/>
+            </Grid>
+        </GroupBox>
+
+
+        <GroupBox Header="Mode" HorizontalAlignment="Left" Height="53" Margin="10,90,0,0" VerticalAlignment="Top" Width="113">
+            <Grid>
+                <RadioButton x:Name="PHYButton" Content="PHY" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="PHYChecked"/>
+                <RadioButton x:Name="DLButton" Content="DL" HorizontalAlignment="Left" Margin="56,10,0,0" VerticalAlignment="Top" Checked="DLChecked"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Modulation" HorizontalAlignment="Left" Height="79" Margin="10,150,0,0" VerticalAlignment="Top" Width="392">
+            <Grid>
+                <RadioButton x:Name="BPSK" Content="B-PSK" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="QPSK" Content="Q-PSK" HorizontalAlignment="Left" Margin="66,10,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="PSK8" Content="8-PSK" HorizontalAlignment="Left" Margin="124,10,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="BPSKwithPNA" Content="BPSK With Peek Noise Avodance" HorizontalAlignment="Left" Margin="179,10,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="FEC" Content="FEC" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Message" HorizontalAlignment="Left" Height="249" Margin="443,10,0,0" VerticalAlignment="Top" Width="591">
+            <Grid>
+                <Label x:Name="ASCIIMessage" Content="ASCII:" HorizontalAlignment="Left" Margin="29,13,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="HEXMessage" Content="HEX:" HorizontalAlignment="Left" Margin="35,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.93,0.565" Width="34"/>
+                <Label x:Name="Received" Content="Received:" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.469,-1.017"/>
+                <TextBox x:Name="ASCIITextBox" HorizontalAlignment="Left" Height="25" Margin="74,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="317" TextChanged="ASCIITextToHex" />
+                <TextBox x:Name="HEXTextBox" HorizontalAlignment="Left" Height="25" Margin="74,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="317" TextChanged="HEXTextToASCII"/>
+                <TextBox x:Name="ReceivedTextBox" HorizontalAlignment="Left" Margin="74,77,0,0" TextWrapping="Wrap" Width="491" Height="140" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible"/>
+                <Button x:Name="ClearSendTextBox" Content="Clear Send" HorizontalAlignment="Left" Margin="396,13,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.293,0.1" Height="25" Click="ClearSendText"/>
+                <Button x:Name="ClearReceivedTextBox" Content="Clear Received" HorizontalAlignment="Left" Margin="396,45,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.293,0.1" Height="25" Click="ClearReceivedText"/>
+                <Button x:Name="SendButton" Content="Send Message" HorizontalAlignment="Left" Margin="476,13,0,0" VerticalAlignment="Top" Width="89" RenderTransformOrigin="0.293,0.1" Height="57" Click="SendMessage"/>
+
+            </Grid>
+        </GroupBox>
+
+        <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Margin="141,107,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="ResetModem"/>
+
+
+
+
+    </Grid>
+</Window>
